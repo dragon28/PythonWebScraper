@@ -9,7 +9,7 @@ def task_playwright():
         
         page = browser.new_page()
         
-        page.goto("https://scrapeme.live/shop/")
+        page.goto("https://scrapeme.live/shop/", timeout=0)
         
         print(page.title())
         

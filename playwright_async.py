@@ -9,7 +9,7 @@ async def task_playwright():
         
         page = await browser.new_page()
         
-        await page.goto("https://scrapeme.live/shop/")
+        await page.goto("https://scrapeme.live/shop/", timeout=0)
         
         print(await page.title())
         
