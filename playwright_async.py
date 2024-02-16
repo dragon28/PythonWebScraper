@@ -54,7 +54,8 @@ async def run(playwright: Playwright) -> None:
 
     await page.goto("https://scrapeme.live/shop/", timeout=0)
     
-    time.sleep(3)
+    #time.sleep(3)
+    await asyncio.sleep(3)
     
     data = await scrape_data(page)
 
