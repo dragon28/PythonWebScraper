@@ -16,4 +16,18 @@ then follow by:
 
 `playwright install`
 
+Selenium:
 
+`pip install selenium`
+
+or 
+
+`pip3 install selenium`
+
+Webdriver Manager:
+
+`pip install webdriver-manager`
+
+or
+
+`pip3 install webdriver-manager`
