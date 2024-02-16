@@ -11,6 +11,8 @@ async def task_playwright():
         
         await page.goto("https://scrapeme.live/shop/", timeout=0)
         
+        time.sleep(3)
+        
         print(await page.title())
         
         await browser.close()

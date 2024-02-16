@@ -1,3 +1,4 @@
+import time
 from playwright.sync_api import sync_playwright
 from playwright.sync_api import Page, expect
 
@@ -10,6 +11,8 @@ def task_playwright():
         page = browser.new_page()
         
         page.goto("https://scrapeme.live/shop/", timeout=0)
+        
+        time.sleep(3)
         
         print(page.title())
         
