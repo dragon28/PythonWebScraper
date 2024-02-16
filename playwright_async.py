@@ -33,15 +33,15 @@ async def scrape_data(page):
 
 async def save_as_csv(data):
     
-	with open("async_scraped_data.csv", "w", newline="") as csvfile:
+    with open("async_scraped_data.csv", "w", newline="") as csvfile:
      
-		fields = ["product", "price", "img_link"]
+        fields = ["product", "price", "img_link"]
   
-		writer = csv.DictWriter(csvfile, fieldnames=fields, quoting=csv.QUOTE_ALL)
+        writer = csv.DictWriter(csvfile, fieldnames=fields, quoting=csv.QUOTE_ALL)
   
-		writer.writeheader()
+        writer.writeheader()
   
-		writer.writerows(data)
+        writer.writerows(data)
 
 
 async def run(playwright: Playwright) -> None:
