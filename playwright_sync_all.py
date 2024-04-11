@@ -81,7 +81,7 @@ def get_next_page_link(page):
     
     page_numbers = pagination.locator("ul.page-numbers")
     
-    if page.query_selector("a.next.page-numbers") is not None:
+    if page_numbers.query_selector("a.next.page-numbers") is not None:
         
         next_page = page_numbers.locator("a.next.page-numbers").nth(0).get_attribute('href')
     
@@ -108,8 +108,9 @@ def run(playwright: Playwright) -> None:
     
     page.wait_for_load_state("domcontentloaded")
     
+    loop = True
     
-    while(get_current_page_number(page) <= get_max_page_numbers(page)):
+    while(loop):
         
         time.sleep(3)
     
@@ -123,6 +124,7 @@ def run(playwright: Playwright) -> None:
         
         else:
             
+            loop = False
             break
         
         if next_page_link is not None or next_page_link != "":
@@ -131,6 +133,7 @@ def run(playwright: Playwright) -> None:
             
         else:
             
+            loop = False
             break
 
     print(data)

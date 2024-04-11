@@ -82,7 +82,7 @@ async def get_next_page_link(page):
     
     page_numbers = await pagination.locator("ul.page-numbers")
     
-    if await page.query_selector("a.next.page-numbers") is not None:
+    if await page_numbers.query_selector("a.next.page-numbers") is not None:
         
         next_page = await page_numbers.locator("a.next.page-numbers").nth(0).get_attribute('href')
     
@@ -109,7 +109,9 @@ async def run(playwright: Playwright) -> None:
     
     await page.wait_for_load_state("domcontentloaded")
     
-    while(await get_current_page_number(page) <= await get_max_page_numbers(page)):
+    loop = True
+    
+    while(loop):
         
         await asyncio.sleep(3)
     
@@ -123,6 +125,7 @@ async def run(playwright: Playwright) -> None:
         
         else:
             
+            loop = False
             break
         
         if next_page_link is not None or next_page_link != "":
@@ -131,6 +134,7 @@ async def run(playwright: Playwright) -> None:
             
         else:
             
+            loop = False
             break
     
     print(data)
