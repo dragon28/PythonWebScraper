@@ -7,21 +7,21 @@ def scrape_data(page):
     
     scraped_elements = []
  
-    items = page.query_selector_all("li.product")
+    items = page.locator("li.product").all()
  
     for i in items:
      
         scraped_element = {}
 
-        el_title = i.query_selector("h2")
+        el_title = i.locator("h2")
 
         scraped_element["product"] = el_title.inner_text()
 
-        el_price = i.query_selector("span.woocommerce-Price-amount")
+        el_price = i.locator("span.woocommerce-Price-amount")
 
         scraped_element["price"] = el_price.text_content()
 
-        image = i.query_selector("a.woocommerce-LoopProduct-link.woocommerce-loop-product__link > img")
+        image = i.locator("a.woocommerce-LoopProduct-link.woocommerce-loop-product__link > img")
 
         scraped_element["img_link"] = image.get_attribute("src")
 
@@ -32,7 +32,7 @@ def scrape_data(page):
 
 def save_as_csv(data):
     
-    with open("sync_scraped_data.csv", "w", newline="") as csvfile:
+    with open("playwright_sync_scraped_data.csv", "w", newline="") as csvfile:
      
         fields = ["product", "price", "img_link"]
   
