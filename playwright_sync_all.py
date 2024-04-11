@@ -81,7 +81,7 @@ def get_next_page_link(page):
     
     page_numbers = pagination.locator("ul.page-numbers")
     
-    if page_numbers.query_selector("a.next.page-numbers") is not None:
+    if page.query_selector("a.next.page-numbers") is not None:
         
         next_page = page_numbers.locator("a.next.page-numbers").nth(0).get_attribute('href')
     

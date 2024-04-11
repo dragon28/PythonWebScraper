@@ -82,7 +82,7 @@ async def get_next_page_link(page):
     
     page_numbers = await pagination.locator("ul.page-numbers")
     
-    if await page_numbers.query_selector("a.next.page-numbers") is not None:
+    if await page.query_selector("a.next.page-numbers") is not None:
         
         next_page = await page_numbers.locator("a.next.page-numbers").nth(0).get_attribute('href')
     
